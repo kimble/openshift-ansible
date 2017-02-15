@@ -464,6 +464,22 @@ class GitHubIdentityProvider(IdentityProviderOauthBase):
         IdentityProviderOauthBase.__init__(self, api_version, idp)
         self._optional += [['organizations']]
 
+class GitLabIdentityProvider(IdentityProviderOauthBase):
+    """ GitLabIdentityProvider
+
+        Attributes:
+
+        Args:
+            api_version(str): OpenShift config version
+            idp (dict): idp config dict
+
+        Raises:
+            AnsibleFilterError:
+    """
+    def __init__(self, api_version, idp):
+        IdentityProviderOauthBase.__init__(self, api_version, idp)
+        self._required += [['url']]
+
 
 class FilterModule(object):
     ''' Custom ansible filters for use by the openshift_master role'''
